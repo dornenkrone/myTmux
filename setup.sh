@@ -36,12 +36,14 @@ fi
 # download files...
 dialog "\nfetching tmux.conf..."
 touch ~/.tmux.conf
-curl -s https://raw.githubusercontent.com/p-z-l/magicTmux/master/tmux.conf -o ~/.tmux.conf
+# curl -s https://github.com/dornenkrone/myTmux/blob/master/tmux.conf -o ~/.tmux.conf
+bash ./update_config.sh
 clone "Tmux Plugin Manager (TPM)" https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm
 # clone "tmux-battery" https://github.com/tmux-plugins/tmux-battery.git ~/.tmux/plugins/tmux-battery
 # clone "tmux-cpu" https://github.com/tmux-plugins/tmux-cpu.git ~/.tmux/plugins/tmux-cpu
 clone "tmux-mem-cpu-load" https://github.com/dornenkrone/tmux-mem-cpu-load.git ~/.tmux/plugins/tmux-mem-cpu-load
 clone "tmux-prefix-highlight" https://github.com/tmux-plugins/tmux-prefix-highlight.git ~/.tmux/plugins/tmux-prefix-highlight
+clone "tmux-autoreload" "https://github.com/b0o/tmux-autoreload.git" ~/.tmux/plugins/tmux-autoreload
 
 # compile files
 cd ~/.tmux/plugins/tmux-mem-cpu-load
