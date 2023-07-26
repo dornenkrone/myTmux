@@ -1,11 +1,11 @@
 #! /bin/sh
 
 dialog() {
-	echo "\033[32m$1\033[34m"
+	echo "$1"
 }
 
 clone() {
-	dialog "\nInstalling $1..."
+	dialog "Installing $1..."
 	git clone $2 $3
 }
 
@@ -15,8 +15,8 @@ mkdirIfNeeded() {
 	fi
 }
 
-echo "\033[33m\n... Is now installing"
-
+echo "\n... Is now installing"
+cwd=${PWD}
 # Backup existing tmux configs (if needed)
 bakupDir=~/.tmux-config-bakups
 bakupDate=$(date +"%Y-%m-%d(%T)")
@@ -45,6 +45,9 @@ clone "tmux-mem-cpu-load" https://github.com/dornenkrone/tmux-mem-cpu-load.git ~
 clone "tmux-prefix-highlight" https://github.com/tmux-plugins/tmux-prefix-highlight.git ~/.tmux/plugins/tmux-prefix-highlight
 clone "tmux-autoreload" "https://github.com/b0o/tmux-autoreload.git" ~/.tmux/plugins/tmux-autoreload
 clone "tmux-mode-indicator" "https://github.com/MunifTanjim/tmux-mode-indicator.git" ~/.tmux/plugins/tmux-mode-indicator
+clone "tmux-resurrect" "https://github.com/tmux-plugins/tmux-resurrect.git" ~/.tmux/plugins/tmux-resurrect
+clone "tmux-continuum" "https://github.com/tmux-plugins/tmux-continuum.git" ~/.tmux/plugins/tmux-continuum
+clone "tmux-yank" "https://github.com/tmux-plugins/tmux-yank.git" ~/.tmux/plugins/tmux-yank
 
 # compile files
 cd ~/.tmux/plugins/tmux-mem-cpu-load
@@ -60,5 +63,9 @@ if -f $TMUX; then
 	echo "Use command \"tmux\" to launch tmux"
 fi
 
-echo "\033[34mMore about the custumized magicTmux, visit: \033[0m https://github.com/dornenkrone/magicTmux"
-echo "\n\033[0m"
+echo "More about the custumized magicTmux, visit: https://github.com/dornenkrone/magicTmux"
+
+echo "Updating Current config to ~/.tmux.conf"
+cd $cwd
+cp ./tmux.conf ~/.tmux.conf
+echo "Config Updated"
