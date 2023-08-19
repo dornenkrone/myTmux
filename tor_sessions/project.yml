@@ -1,0 +1,36 @@
+# ~/.tmuxinator/sample.yml
+name: Project
+root: ~/Project
+
+# layout candidates:
+# even-horizontal
+# Panes are spread out evenly from left to right across the window.
+# even-vertical
+# Panes are spread evenly from top to bottom.
+# main-horizontal
+# A large (main) pane is shown at the top of the window and the remaining panes are spread from left to right in the leftover space at the bottom. Use the main-pane-height window option to specify the height of the top pane.
+# main-vertical
+# Similar to main-horizontal but the large pane is placed on the left and the others spread from top to bottom along the right. See the main-pane-width window option.
+# tiled
+# Panes are spread out as evenly as possible over the window in both rows and columns.
+# startup_window: saber_utils
+
+windows:
+  - main_session:
+      layout: even-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - conda activate torch
+        - conda activate torch
+  - saber_utils:
+      root: ~/Project/saber_utils/saber_utils
+      panes: conda activate torch
+  - sys_monitor:
+      layout: even-vertical
+      panes:
+        - htop
+        - nvitop
+  - remote: ssh cai@server
+
