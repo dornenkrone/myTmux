@@ -1,6 +1,6 @@
 # ~/.tmuxinator/sample.yml
 name: project
-root: ~/project
+root: ~/Project
 
 # layout candidates:
 # even-horizontal
@@ -25,13 +25,13 @@ windows:
         - conda activate torch
         - conda activate torch
   - saber_utils:
-      root: ~/project/saber_utils/saber_utils
+      root: ~/Project/saber_utils/saber_utils
       panes: conda activate torch
   - sys_monitor:
       layout: even-vertical
       panes:
         - htop
         - nvitop
-  - remote: # ssh cai@server
-
+  - remote: conda activate torch # ssh cai@server
+      
 
