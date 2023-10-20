@@ -48,7 +48,7 @@ clone "tmux-mode-indicator" "https://github.com/MunifTanjim/tmux-mode-indicator.
 clone "tmux-resurrect" "https://github.com/tmux-plugins/tmux-resurrect.git" ~/.tmux/plugins/tmux-resurrect
 clone "tmux-continuum" "https://github.com/tmux-plugins/tmux-continuum.git" ~/.tmux/plugins/tmux-continuum
 # clone "tmux-yank" "https://github.com/tmux-plugins/tmux-yank.git" ~/.tmux/plugins/tmux-yank
-clone "tmux-current-pane-hostname" "https://github.com/soyuka/tmux-current-pane-hostname.git" ~/.tmux/plugins/tmux-current-pane-hostname
+clone "tmux-current-pane-hostname" "https://github.com/dornenkrone/my_currentpanehostname.tmux.git" ~/.tmux/plugins/tmux-current-pane-hostname
 clone "tmux-fuzzback" "https://github.com/roosta/tmux-fuzzback.git" ~/.tmux/plugins/tmux-fuzzback
 # clone "tmux-sessionist" "https://github.com/tmux-plugins/tmux-sessionist.git" ~/.tmux/plugins/tmux-sessionist
 

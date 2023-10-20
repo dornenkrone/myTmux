@@ -1,0 +1,46 @@
+# ~/.tmuxinator/pinn.yml
+
+name: pinn 
+root: ~/Project
+
+windows: 
+  - pinn:
+      root: ~/Project/pinn_mbrl/pinn_mbrl/
+      layout: even-horizontal
+      panes:
+        - conda activate torch
+        - conda activate torch
+  - safe_rl_baselines:
+      root: ~/Project/safe_rl_baselines/safe_rl_baselines/environment
+      layout: even-horizontal
+  
+  - sys_montor:
+      layout: even-vertical
+      panes:
+        - htop
+        - nvitop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
