@@ -42,7 +42,7 @@ root: ~/
 # startup_pane: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
-# attach: false
+attach: false
 
 windows:
   - editor:
@@ -51,7 +51,7 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - nvim
+        - nvim $PWD
         - conda activate torch
   - server: echo $PWD
   - logs: 

@@ -15,6 +15,49 @@ root: ~/project
 # Panes are spread out as evenly as possible over the window in both rows and columns.
 # startup_window: saber_utils
 
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+attach: false
+
+
+
+
 windows:
   - main_session:
       layout: even-horizontal
@@ -22,16 +65,25 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - conda activate torch
-        - conda activate torch
+        - pane1:
+          - conda activate torch
+          - clear
+        - pane2:
+          - conda activate torch
+          - clear
+
   - saber_utils:
       root: ~/project/saber_utils/saber_utils
-      panes: conda activate torch
+      panes: 
+        - conda activate torch
+        - clear
+
   - sys_monitor:
       layout: even-vertical
       panes:
         - htop
         - nvitop
+
   - remote: # ssh cai@server
 
 
