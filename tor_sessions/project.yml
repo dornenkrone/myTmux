@@ -82,7 +82,7 @@ windows:
       layout: even-vertical
       panes:
         - htop
-        - nvitop
+        - python3 -m nvitop
 
   - remote: # ssh cai@server
 
