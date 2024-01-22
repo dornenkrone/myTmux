@@ -42,12 +42,12 @@ root: ~/Project
 # startup_pane: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
-attach: false
+# attach: false
 
 
 windows: 
   - pinn:
-      root: ~/Project/pinn_mbrl/pinn_mbrl/model
+      root: ~/Project/pinn_mbrl/pinn_mbrl/cartpoleswingup/
       layout: even-horizontal
       panes:
         - editor:
@@ -58,8 +58,8 @@ windows:
           - conda activate torch
           - clear
 
-  - safe_rl_baselines:
-      root: ~/Project/safe_rl_baselines/safe_rl_baselines/environment
+  - trainer:
+      root: ~/Project/trainer
       layout: even-horizontal
       panes:
         - editor:
@@ -70,7 +70,17 @@ windows:
         - cli:
           - conda activate torch
           - clear
-  
+  - backup:
+      root: ~/Project
+      layout: even-horizontal
+      panes:
+        - explorer:
+          - conda activate torch
+          - clear
+        - debugger:
+          - conda activate torch
+          - clear
+
   - sys_montor:
       layout: even-vertical
       panes:
@@ -78,27 +88,6 @@ windows:
           - htop
         - gpumon:
           - python3 -m nvitop
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
