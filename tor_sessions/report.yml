@@ -1,0 +1,62 @@
+# ~/.tmuxinator/sample.yml
+
+name: paper_report
+root: ~/Documents/paper_reading_notes/ 
+
+attach: false
+
+windows:
+  - tex-main:
+      layout: main-vertical
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - editor:
+          - conda activate torch
+          - clear
+          - nvim main.tex
+        - compiler:
+          - bash compile.sh
+
+  - tex-piml:
+      root: ~/Documents/paper_reading_notes/source/piml
+      panes:
+        - editor:
+          - conda activate torch
+          - clear
+          - nvim $PWD
+
+  - tex-racing: 
+      root: ~/Documents/paper_reading_notes/source/racing
+      panes:
+        - editor:
+          - conda activate  torch
+          - clear
+          - nvim $PWD
+
+  - tex-rl: 
+      root: ~/Documents/paper_reading_notes/source/rl 
+      panes:
+        - editor:
+          - conda activate torch
+          - clear
+          - nvim $PWD
+
+  - tex-safety: 
+      root: ~/Documents/paper_reading_notes/source/safety 
+      panes:
+        - editor:
+          - conda activate torch
+          - clear
+          - nvim $PWD
+
+  - tex-uncertainty: 
+      root: ~/Documents/paper_reading_notes/source/uncertainty
+      panes:
+        - editor:
+          - conda activate torch
+          - clear
+          - nvim $PWD
+
+
