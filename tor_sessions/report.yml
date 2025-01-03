@@ -1,6 +1,6 @@
 # ~/.tmuxinator/sample.yml
 
-name: paper_report
+name: report
 root: ~/Documents/paper_reading_notes/ 
 
 attach: false
