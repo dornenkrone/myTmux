@@ -25,7 +25,7 @@ windows:
         - editor:
           - conda activate torch
           - clear
-          - nvim $PWD
+          - nvim main.tex
 
   - tex-racing: 
       root: ~/Documents/paper_reading_notes/source/racing
@@ -33,7 +33,7 @@ windows:
         - editor:
           - conda activate  torch
           - clear
-          - nvim $PWD
+          - nvim main.tex
 
   - tex-rl: 
       root: ~/Documents/paper_reading_notes/source/rl 
@@ -41,7 +41,7 @@ windows:
         - editor:
           - conda activate torch
           - clear
-          - nvim $PWD
+          - nvim main.tex
 
   - tex-safety: 
       root: ~/Documents/paper_reading_notes/source/safety 
@@ -49,7 +49,7 @@ windows:
         - editor:
           - conda activate torch
           - clear
-          - nvim $PWD
+          - nvim main.tex
 
   - tex-uncertainty: 
       root: ~/Documents/paper_reading_notes/source/uncertainty
@@ -57,6 +57,14 @@ windows:
         - editor:
           - conda activate torch
           - clear
-          - nvim $PWD
+          - nvim main.tex
+
+  - tex-parsebank: 
+      root: ~/Documents/paper_reading_notes/source/parsebank
+      panes:
+        - editor:
+          - conda activate torch
+          - clear
+          - nvim main.tex
 
 
