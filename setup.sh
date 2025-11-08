@@ -4,18 +4,18 @@
 sudo apt-get install -y xsel
 
 dialog() {
-	echo "$1"
+  echo "$1"
 }
 
 clone() {
-	dialog "Installing $1..."
-	git clone $2 $3
+  dialog "Installing $1..."
+  git clone $2 $3
 }
 
 mkdirIfNeeded() {
-	if [ ! -d $1 ]; then
-		mkdir $1
-	fi
+  if [ ! -d $1 ]; then
+    mkdir $1
+  fi
 }
 
 echo "\n... Is now installing"
@@ -24,16 +24,16 @@ cwd=${PWD}
 bakupDir=~/.tmux-config-bakups
 bakupDate=$(date +"%Y-%m-%d(%T)")
 if [ -d ~/.tmux/ ]; then
-	dialog "backing up ~/.tmux to ${backupDir}/${bakupDate}/tmux..."
-	mkdirIfNeeded $bakupDir
-	mkdirIfNeeded $bakupDir/$bakupDate/
-	mv ~/.tmux $bakupDir/$bakupDate/tmux/
+  dialog "backing up ~/.tmux to ${backupDir}/${bakupDate}/tmux..."
+  mkdirIfNeeded $bakupDir
+  mkdirIfNeeded $bakupDir/$bakupDate/
+  mv ~/.tmux $bakupDir/$bakupDate/tmux/
 fi
 if [ -f ~/.tmux.conf ]; then
-	dialog "backing up ~/.tmux.conf to ${bakupDir}${bakupDate}/tmux.conf..."
-	mkdirIfNeeded $bakupDir
-	mkdirIfNeeded $bakupDir/$bakupDate/
-	mv ~/.tmux.conf $bakupDir/$bakupDate/tmux.conf
+  dialog "backing up ~/.tmux.conf to ${bakupDir}${bakupDate}/tmux.conf..."
+  mkdirIfNeeded $bakupDir
+  mkdirIfNeeded $bakupDir/$bakupDate/
+  mv ~/.tmux.conf $bakupDir/$bakupDate/tmux.conf
 fi
 
 # download files...
@@ -53,6 +53,8 @@ clone "tmux-continuum" "https://github.com/tmux-plugins/tmux-continuum.git" ~/.t
 clone "tmux-yank" "https://github.com/tmux-plugins/tmux-yank.git" ~/.tmux/plugins/tmux-yank
 clone "tmux-current-pane-hostname" "https://github.com/dornenkrone/my_currentpanehostname.tmux.git" ~/.tmux/plugins/tmux-current-pane-hostname
 clone "tmux-fuzzback" "https://github.com/roosta/tmux-fuzzback.git" ~/.tmux/plugins/tmux-fuzzback
+clone "tmux-network-speed" "https://github.com/minhdanh/tmux-network-speed.git" ~/.tmux/plugins/tmux-network-speed
+
 # clone "tmux-sessionist" "https://github.com/tmux-plugins/tmux-sessionist.git" ~/.tmux/plugins/tmux-sessionist
 
 # compile files
@@ -66,7 +68,7 @@ dialog "magicTmux installation Finished"
 
 # tell user to launch tmux if needed
 if -f $TMUX; then
-	echo "Use command \"tmux\" to launch tmux"
+  echo "Use command \"tmux\" to launch tmux"
 fi
 
 echo "More about the custumized magicTmux, visit: https://github.com/dornenkrone/magicTmux"
