@@ -1,8 +1,6 @@
 #! /bin/sh
 
 # install pre requirements
-sudo apt-get install -y xsel
-
 dialog() {
   echo "$1"
 }
@@ -18,7 +16,6 @@ mkdirIfNeeded() {
   fi
 }
 
-echo "\n... Is now installing"
 cwd=${PWD}
 # Backup existing tmux configs (if needed)
 bakupDir=~/.tmux-config-bakups
@@ -44,8 +41,8 @@ bash ./update_config.sh
 clone "Tmux Plugin Manager (TPM)" https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm
 # clone "tmux-battery" https://github.com/tmux-plugins/tmux-battery.git ~/.tmux/plugins/tmux-battery
 # clone "tmux-cpu" https://github.com/tmux-plugins/tmux-cpu.git ~/.tmux/plugins/tmux-cpu
-clone "tmux-mem-cpu-load" https://github.com/dornenkrone/tmux-mem-cpu-load.git ~/.tmux/plugins/tmux-mem-cpu-load
-clone "tmux-prefix-highlight" https://github.com/tmux-plugins/tmux-prefix-highlight.git ~/.tmux/plugins/tmux-prefix-highlight
+clone "tmux-mem-cpu-load" "https://github.com/dornenkrone/tmux-mem-cpu-load.git" ~/.tmux/plugins/tmux-mem-cpu-load
+clone "tmux-prefix-highlight" "https://github.com/tmux-plugins/tmux-prefix-highlight.git" ~/.tmux/plugins/tmux-prefix-highlight
 clone "tmux-autoreload" "https://github.com/b0o/tmux-autoreload.git" ~/.tmux/plugins/tmux-autoreload
 clone "tmux-mode-indicator" "https://github.com/MunifTanjim/tmux-mode-indicator.git" ~/.tmux/plugins/tmux-mode-indicator
 clone "tmux-resurrect" "https://github.com/tmux-plugins/tmux-resurrect.git" ~/.tmux/plugins/tmux-resurrect
@@ -54,7 +51,7 @@ clone "tmux-yank" "https://github.com/tmux-plugins/tmux-yank.git" ~/.tmux/plugin
 clone "tmux-current-pane-hostname" "https://github.com/dornenkrone/my_currentpanehostname.tmux.git" ~/.tmux/plugins/tmux-current-pane-hostname
 clone "tmux-fuzzback" "https://github.com/roosta/tmux-fuzzback.git" ~/.tmux/plugins/tmux-fuzzback
 clone "tmux-network-speed" "https://github.com/minhdanh/tmux-network-speed.git" ~/.tmux/plugins/tmux-network-speed
-
+# clone "tmux-fzf-pane-switch" "https://github.com/Kristijan/tmux-fzf-pane-switch.git" ~/.tmux/plugins/tmux-fzf-pane-switch
 # clone "tmux-sessionist" "https://github.com/tmux-plugins/tmux-sessionist.git" ~/.tmux/plugins/tmux-sessionist
 
 # compile files
@@ -68,12 +65,13 @@ dialog "magicTmux installation Finished"
 
 # tell user to launch tmux if needed
 if -f $TMUX; then
-  echo "Use command \"tmux\" to launch tmux"
+  echo "Tmux installed: (version: $(tmux -V))"
 fi
 
 echo "More about the custumized magicTmux, visit: https://github.com/dornenkrone/magicTmux"
 
-echo "Updating Current config to ~/.tmux.conf"
+echo "Creating link ~/.tmux.conf"
 cd $cwd
-cp ./tmux.conf ~/.tmux.conf
+# cp ./tmux.conf ~/.tmux.conf
+ln -s $PWD/tmux.conf ~/.tmux.conf
 echo "Config Updated"
