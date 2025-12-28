@@ -33,12 +33,13 @@ if [ -f ~/.tmux.conf ]; then
   mv ~/.tmux.conf $bakupDir/$bakupDate/tmux.conf
 fi
 
-PLUGIN_DIR="/home/$(logname)/.tmux/plugins"
-
 # clone repos...
-dialog "\nfetching tmux.conf..."
+PLUGIN_DIR="/home/$(logname)/.tmux/plugins"
 mkdir -p $PLUGIN_DIR
-clone "Tmux Plugin Manager (TPM)" https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm
+dialog "\nfetching tmux.conf..."
+clone "Tmux Plugin Manager (TPM)" https://github.com/tmux-plugins/tpm.git $PLUGIN_DIR/tpm
+
+clone "tmux2k" "https://github.com/2KAbhishek/tmux2k" $PLUGIN_DIR/tmux2k
 clone "tmux-yank" "https://github.com/tmux-plugins/tmux-yank.git" $PLUGIN_DIR/tmux-yank
 clone "tmux-fuzzback" "https://github.com/roosta/tmux-fuzzback.git" $PLUGIN_DIR/tmux-fuzzback
 clone "tmux-resurrect" "https://github.com/tmux-plugins/tmux-resurrect.git" $PLUGIN_DIR/tmux-resurrect
@@ -49,6 +50,7 @@ clone "tmux-fzf-pane-switch" "https://github.com/Kristijan/tmux-fzf-pane-switch.
 clone "tmux-mode-indicator" "https://github.com/MunifTanjim/tmux-mode-indicator.git" $PLUGIN_DIR/tmux-mode-indicator
 clone "tmux-prefix-highlight" "https://github.com/tmux-plugins/tmux-prefix-highlight.git" $PLUGIN_DIR/tmux-prefix-highlight
 clone "tmux-current-pane-hostname" "https://github.com/dornenkrone/my_currentpanehostname.tmux.git" $PLUGIN_DIR/tmux-current-pane-hostname
+
 # clone "tmux-battery" https://github.com/tmux-plugins/tmux-battery.git ~/.tmux/plugins/tmux-battery
 # clone "tmux-cpu" https://github.com/tmux-plugins/tmux-cpu.git ~/.tmux/plugins/tmux-cpu
 # clone "tmux-autoreload" "https://github.com/b0o/tmux-autoreload.git" ~/.tmux/plugins/tmux-autoreload
@@ -73,5 +75,5 @@ echo "More about the custumized magicTmux, visit: https://github.com/dornenkrone
 echo "Creating link ~/.tmux.conf"
 cd $cwd
 # cp ./tmux.conf ~/.tmux.conf
-ln -s $PWD/tmux.conf ~/.tmux.conf
+ln -s $PWD/config/tmux.conf ~/.tmux.conf
 echo "Config Updated"
