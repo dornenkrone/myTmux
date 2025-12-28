@@ -33,25 +33,25 @@ if [ -f ~/.tmux.conf ]; then
   mv ~/.tmux.conf $bakupDir/$bakupDate/tmux.conf
 fi
 
-# download files...
+PLUGIN_DIR="/home/$(logname)/.tmux/plugins"
+
+# clone repos...
 dialog "\nfetching tmux.conf..."
-touch ~/.tmux.conf
-# curl -s https://github.com/dornenkrone/myTmux/blob/master/tmux.conf -o ~/.tmux.conf
-bash ./update_config.sh
+mkdir -p $PLUGIN_DIR
 clone "Tmux Plugin Manager (TPM)" https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm
+clone "tmux-yank" "https://github.com/tmux-plugins/tmux-yank.git" $PLUGIN_DIR/tmux-yank
+clone "tmux-fuzzback" "https://github.com/roosta/tmux-fuzzback.git" $PLUGIN_DIR/tmux-fuzzback
+clone "tmux-resurrect" "https://github.com/tmux-plugins/tmux-resurrect.git" $PLUGIN_DIR/tmux-resurrect
+clone "tmux-continuum" "https://github.com/tmux-plugins/tmux-continuum.git" $PLUGIN_DIR/tmux-continuum
+clone "tmux-network-speed" "https://github.com/minhdanh/tmux-network-speed.git" $PLUGIN_DIR/tmux-network-speed
+clone "tmux-mem-cpu-load" "https://github.com/dornenkrone/tmux-mem-cpu-load.git" $PLUGIN_DIR/tmux-mem-cpu-load
+clone "tmux-fzf-pane-switch" "https://github.com/Kristijan/tmux-fzf-pane-switch.git" $PLUGIN_DIR/tmux-fzf-pane-switch
+clone "tmux-mode-indicator" "https://github.com/MunifTanjim/tmux-mode-indicator.git" $PLUGIN_DIR/tmux-mode-indicator
+clone "tmux-prefix-highlight" "https://github.com/tmux-plugins/tmux-prefix-highlight.git" $PLUGIN_DIR/tmux-prefix-highlight
+clone "tmux-current-pane-hostname" "https://github.com/dornenkrone/my_currentpanehostname.tmux.git" $PLUGIN_DIR/tmux-current-pane-hostname
 # clone "tmux-battery" https://github.com/tmux-plugins/tmux-battery.git ~/.tmux/plugins/tmux-battery
 # clone "tmux-cpu" https://github.com/tmux-plugins/tmux-cpu.git ~/.tmux/plugins/tmux-cpu
-clone "tmux-mem-cpu-load" "https://github.com/dornenkrone/tmux-mem-cpu-load.git" ~/.tmux/plugins/tmux-mem-cpu-load
-clone "tmux-prefix-highlight" "https://github.com/tmux-plugins/tmux-prefix-highlight.git" ~/.tmux/plugins/tmux-prefix-highlight
-clone "tmux-autoreload" "https://github.com/b0o/tmux-autoreload.git" ~/.tmux/plugins/tmux-autoreload
-clone "tmux-mode-indicator" "https://github.com/MunifTanjim/tmux-mode-indicator.git" ~/.tmux/plugins/tmux-mode-indicator
-clone "tmux-resurrect" "https://github.com/tmux-plugins/tmux-resurrect.git" ~/.tmux/plugins/tmux-resurrect
-clone "tmux-continuum" "https://github.com/tmux-plugins/tmux-continuum.git" ~/.tmux/plugins/tmux-continuum
-clone "tmux-yank" "https://github.com/tmux-plugins/tmux-yank.git" ~/.tmux/plugins/tmux-yank
-clone "tmux-current-pane-hostname" "https://github.com/dornenkrone/my_currentpanehostname.tmux.git" ~/.tmux/plugins/tmux-current-pane-hostname
-clone "tmux-fuzzback" "https://github.com/roosta/tmux-fuzzback.git" ~/.tmux/plugins/tmux-fuzzback
-clone "tmux-network-speed" "https://github.com/minhdanh/tmux-network-speed.git" ~/.tmux/plugins/tmux-network-speed
-# clone "tmux-fzf-pane-switch" "https://github.com/Kristijan/tmux-fzf-pane-switch.git" ~/.tmux/plugins/tmux-fzf-pane-switch
+# clone "tmux-autoreload" "https://github.com/b0o/tmux-autoreload.git" ~/.tmux/plugins/tmux-autoreload
 # clone "tmux-sessionist" "https://github.com/tmux-plugins/tmux-sessionist.git" ~/.tmux/plugins/tmux-sessionist
 
 # compile files
