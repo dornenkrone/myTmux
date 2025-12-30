@@ -1,7 +1,6 @@
 # Config reload
 bind r source-file ~/.tmux.conf \; display "Tmux config updated"
 
-
 # ----- Prefix -----
 
 unbind-key C-b
