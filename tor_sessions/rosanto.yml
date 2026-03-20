@@ -1,7 +1,7 @@
-# ~/.tmuxinator/sample.yml
+# ~/.tmuxinator/rl.yml
 
-name: example 
-root: ~/
+name: ros_antobot
+root: ~/Project/anto_ws/src/
 
 # Optional tmux socket
 # socket_name: foo
@@ -44,14 +44,46 @@ root: ~/
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
-windows:
-  - editor:
+
+windows: 
+  - preception:
+      root:  ~/Project/anto_ws/src/path_planner/script/preception
       layout: even-horizontal
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
       panes:
-        - nvim
-        - conda activate torch
-  - server: echo $PWD
-  - logs: 
+        - editor:
+          - clear
+        # - nvim $PWD
+        - cli:
+        # - conda activate torch
+          - clear
+
+  - control:
+      root: ~/Project/anto_ws/src/path_planner/script/control
+      layout: even-horizontal
+      panes:
+        - editor:
+        #  - conda activate torch
+          - clear
+        # - nvim $PWD
+
+        - cli:
+        #  - conda activate torch
+          - clear
+  - roscore:
+      root: ~/Project/anto_ws
+      layout: even-horizontal
+      panes:
+        - explorer:
+        #- conda activate torch
+          - clear
+        - debugger:
+        # - conda activate torch
+          - clear
+
+  - sysmon:
+      layout: even-horizontal
+      panes:
+        - sysmon:
+          - htop
+        - gpumon:
+          - python3 -m nvitop

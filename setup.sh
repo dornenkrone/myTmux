@@ -1,16 +1,21 @@
 #! /bin/sh
-# installation folder ~/.config/tmux
+# installation folder ~/.tmux
+set -exu
 CWD=${PWD}
 
-TMUX_CONFIG_DIR="/home/$(logname)/.config/tmux"
-echo $TMUX_CONFIG_DIR
-PLUGIN_DIR="$TMUX_CONFIG_DIR/plugins"
+TMUX_CONFIG_DIR="/home/$(logname)/.tmux/config"
+PLUGIN_DIR="/home/$(logname)/.tmux/plugins"
+echo "config dir: $TMUX_CONFIG_DIR"
+echo "plugin dir: $PLUGIN_DIR"
+mkdir -p $TMUX_CONFIG_DIR
 mkdir -p $PLUGIN_DIR
-sudo ln -s $CWD/config "$TMUX_CONFIG_DIR/config"
-sudo ln -s $TMUX_CONFIG_DIR/config/tmux.conf ~/.tmux.conf
+# sudo ln -s $CWD/config "$TMUX_CONFIG_DIR/config"
+sudo ln -s $TMUX_CONFIG_DIR/config/tmux.conf "/home/$(logname)/.tmux.conf"
+sudo ln -s $CWD/tor_sessions "/home/$(logname)/.tmuxinator"
 
 # clone repos...
 echo "\nfetching plugins..."
+
 git clone https://github.com/tmux-plugins/tpm.git $PLUGIN_DIR/tpm                                               # "Tmux Plugin Manager (TPM)"
 git clone https://github.com/2KAbhishek/tmux2k $PLUGIN_DIR/tmux2k                                               # "tmux2k"
 git clone https://github.com/tmux-plugins/tmux-yank.git $PLUGIN_DIR/tmux-yank                                   # "tmux-yank"

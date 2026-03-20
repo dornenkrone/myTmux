@@ -1,8 +1,13 @@
 # ~/.tmuxinator/sample.yml
 
-name: example 
-root: ~/
+name: bulletbot
+root: ~/Project/agribot/ 
+pyenv: &pyenv agribot
+# attach: false
 
+common_cmd: &cmd 
+    - conda activate agribot
+    - clear
 # Optional tmux socket
 # socket_name: foo
 
@@ -45,13 +50,29 @@ root: ~/
 # attach: false
 
 windows:
-  - editor:
+  - developing:
       layout: even-horizontal
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - nvim
-        - conda activate torch
-  - server: echo $PWD
-  - logs: 
+        - editor: *cmd
+        - temrinal: *cmd
+
+
+  - tester: 
+      root: ~/Project/agribot/test
+      layout: even-horizontal
+      panes:
+        - editor: *cmd 
+        - terminal: *cmd
+
+
+  - sysmon:
+      layout: even-horizontal
+      panes:
+        - htop: htop
+        - nvitop: nvitop
+      
+
+
