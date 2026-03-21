@@ -2,14 +2,15 @@
 # installation folder ~/.tmux
 set -exu
 CWD=${PWD}
+sudo rm -rf /home/$(logname)/.tmux*
 
-TMUX_CONFIG_DIR="/home/$(logname)/.tmux/config"
+TMUX_CONFIG_DIR="/home/$(logname)/.tmux"
 PLUGIN_DIR="/home/$(logname)/.tmux/plugins"
 echo "config dir: $TMUX_CONFIG_DIR"
 echo "plugin dir: $PLUGIN_DIR"
 mkdir -p $TMUX_CONFIG_DIR
 mkdir -p $PLUGIN_DIR
-# sudo ln -s $CWD/config "$TMUX_CONFIG_DIR/config"
+sudo ln -s $CWD/config "$TMUX_CONFIG_DIR"
 sudo ln -s $TMUX_CONFIG_DIR/config/tmux.conf "/home/$(logname)/.tmux.conf"
 sudo ln -s $CWD/tor_sessions "/home/$(logname)/.tmuxinator"
 
@@ -39,7 +40,7 @@ cd $PLUGIN_DIR/tmux-mem-cpu-load
 /bin/sh compile.sh
 
 # reload tmux config
-tmux source-file ~/.tmux.conf
+# tmux source-file ~/.tmux.conf
 
 echo "magicTmux installation Finished"
 
