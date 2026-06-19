@@ -46,8 +46,7 @@ fn callback(event: Event, state: &mut Arc<Mutex<State>>) {
 
 fn main() {
     let state = Arc::new(Mutex::new(State::default()));
-
-    // --- Thread 1: Event listener (blocks) ---
+    
     let state_clone = Arc::clone(&state);
     std::thread::spawn(move || {
         if let Err(error) = listen(move |e| callback(e, &mut state_clone.clone())) {
